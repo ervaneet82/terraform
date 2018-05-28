@@ -1,0 +1,11 @@
+.*
+.*/
+.**/
+.terraform/
+.delivery
+.kitchen/
+mykey
+mykey.pub
+terraform.*
+*.deb
+*.rpm
