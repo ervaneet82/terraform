@@ -1,6 +1,4 @@
 provider "aws" {
-  #shared_credentials_file = "$HOME/.aws/credentials"
-  profile = "vaneet"
   region  = "${var.region}"
 }
 
