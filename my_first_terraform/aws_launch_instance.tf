@@ -1,5 +1,5 @@
 provider "aws" {
-  region  = "${var.region}"
+  region = "${var.region}"
 }
 
 resource "aws_instance" "terraform_test" {
@@ -18,18 +18,13 @@ resource "aws_instance" "terraform_test" {
     create = "2m"
   }
 
-  # }
   provisioner "local-exec" {
     command = "echo ${aws_instance.terraform_test.public_ip} > aws_ip.txt"
-
-    #timeout = "5m"
   }
 
   provisioner "file" {
     source      = "script.sh"
     destination = "/tmp/script.sh"
-
-    #timeout = "5m"
   }
 
   provisioner "remote-exec" {
