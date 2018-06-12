@@ -1,0 +1,36 @@
+{
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt-get update",
+        "sudo apt-get install curl -y",
+        "curl -L https://omnitruck.chef.io/chef/install.sh | sudo bash",
+        "mkdir /tmp/cookbooks"
+      ]
+    },
+    {
+      "type": "file",
+      "source": "ntp.tgz",
+      "destination": "/tmp/cookbooks/ntp.tgz"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "cd /tmp/cookbooks",
+        "sudo tar -xzvf ntp.tgz",
+        "sudo chef-client -zr 'ntp'"
+      ]
+    }
+  ],
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "google.json",
+      "project_id": "static-destiny-206401",
+      "source_image_family": "ubuntu-1804-lts",
+      "ssh_username": "packer",
+      "zone": "us-central1-a"
+    }
+  ]
+}
