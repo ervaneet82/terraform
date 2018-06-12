@@ -9,3 +9,4 @@ mykey.pub
 terraform.*
 *.deb
 *.rpm
+google.json
