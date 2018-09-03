@@ -5,3 +5,17 @@ variable "PATH_TO_PUBLIC_KEY" {
 variable "PATH_TO_PRIVATE_KEY" {
   default = "mykey"
 }
+
+variable "num_nodes" {
+  description = "Number of nodes to create"
+  default     = 3
+}
+
+variable "disk_size_gb" {
+  description = "The size of the image in gigabytes."
+  default     = 20
+}
+
+variable "instance_user" {
+  default = "centos"
+}

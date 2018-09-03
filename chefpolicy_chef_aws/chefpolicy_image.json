@@ -1,0 +1,66 @@
+{
+  "builders": [{
+    "type": "amazon-ebs",
+    "region": "us-east-1",
+    "source_ami_filter": {
+      "filters": {
+        "virtualization-type": "hvm",
+        "name": "*ubuntu-xenial-16.04-amd64-server-*",
+        "root-device-type": "ebs"
+      },
+      "most_recent": true
+    },
+    "instance_type": "t2.micro",
+    "ssh_username": "ubuntu",
+		"ami_name": "packer-example {{timestamp}}",
+    "subnet_id": "subnet-08bf58a98ae93e879"
+    }],
+    "provisioners": [
+			{
+				"type": "shell-local",
+				"command" : "sleep 30;rm -f testpolicy-*.tgz"
+			},
+			{
+				"type": "shell-local",
+				"command" : "sleep 60;chef install -D testpolicy.rb;chef export -a -D ${path.cwd}/testpolicy.rb ${path.cwd}/"
+			},
+			{
+				"type": "shell-local",
+				"command" : "sleep 60;mv ${path.cwd}/testpolicy-*.tgz ${path.cwd}/testpolicy.tgz;"
+			},
+			{
+	      "type": "shell",
+	      "inline": [
+	        "mkdir /tmp/chef_zero"
+	      ]
+	    },
+			{
+	      "type": "file",
+	      "source": "testpolicy.tgz",
+	      "destination": "/tmp/chef_zero/testpolicy.tgz"
+	    },
+			{
+	      "type": "shell",
+	      "inline": [
+					"cd /tmp/chef_zero",
+		      "tar xvzf testpolicy.tgz",
+		      "sudo apt-get update"
+	      ]
+	    },
+			{
+  			"type": "chef-client",
+  			"server_url": "http://localhost:8889",
+  			"config_template": "client.rb.tpl",
+  			"run_list": "{{user `chef_run_list`}}",
+				"node_name"   : "vaneet-test",
+		    "use_policyfile" : "true",
+		    "policy_group"   : "local",
+		    "policy_name"    : "testpolicy",
+		    "server_url"     : "http://localhost:8889",
+		    "user_name"      : "vaneet",
+		    "user_key"       : "nothingtoseeherefolks",
+		    "version"        : "13",
+		    "log_to_file"    : "false"
+			}
+    ]
+  }

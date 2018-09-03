@@ -1,0 +1,42 @@
+{
+  "revision_id": "82abfad2809a626c7084b05de580f22675fa482dc108114b68102cfa8b41b49f",
+  "name": "testpolicy",
+  "run_list": [
+    "recipe[ntp::default]"
+  ],
+  "included_policy_locks": [
+
+  ],
+  "cookbook_locks": {
+    "ntp": {
+      "version": "3.5.6",
+      "identifier": "a26b7ccedcd7d32872cea810df16fe3b889fae9b",
+      "dotted_decimal_identifier": "45717130017822675.11385230976933654.279531648691867",
+      "cache_key": "ntp-3.5.6-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ntp/versions/3.5.6/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ntp/versions/3.5.6/download",
+        "version": "3.5.6"
+      }
+    }
+  },
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "solution_dependencies": {
+    "Policyfile": [
+      [
+        "ntp",
+        "= 3.5.6"
+      ]
+    ],
+    "dependencies": {
+      "ntp (3.5.6)": [
+
+      ]
+    }
+  }
+}
