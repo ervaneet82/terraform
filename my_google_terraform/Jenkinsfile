@@ -4,9 +4,9 @@ pipeline {
       SVC_ACCOUNT_KEY = credentials('google-terraform')
     }
     stages {
-        stage('checkout') {
+        stage('credentials') {
             steps {
-                git credentialsId: '609ddddd-0b85-48e0-85dd-8c8a546b68c5', url: 'https://github.com/ervaneet82/terraform.git'
+                sh 'echo $SVC_ACCOUNT_KEY | base64 -d > ./my_google_terraform/google.json'
             }
         }
     }
