@@ -6,25 +6,26 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
+        ws {
         withCredentials([file(credentialsId: 'google-terraform', variable: 'mySecretFile')]) {
         // some block can be a groovy block as well and the variable will be available to the groovy script
         sh '''
           cd my_google_terraform
-          echo "$mySecretFile" > google.json
+          use $mySecretFile > google.json
+          
          '''
        }
+     }
      }
     }
     stage('google-ssh-key') {
       steps {
-        ws {
-         withCredentials([file(credentialsId: 'google-ssh-pub-key', variable: 'mykey')]) {
-         // some block can be a groovy block as well and the variable will be available to the groovy script
-         sh '''
-           cd my_google_terraform
-           echo "$mykey" > mykey.pub
-          '''
-        }
+        withCredentials([file(credentialsId: 'google-ssh-pub-key', variable: 'mykey')]) {
+        // some block can be a groovy block as well and the variable will be available to the groovy script
+        sh '''
+          cd my_google_terraform
+          echo "$mykey" > mykey.pub
+         '''
        }
      }
     }
