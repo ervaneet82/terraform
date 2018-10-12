@@ -12,7 +12,7 @@ pipeline {
           pwd
           echo "This is the content of the file `cat $mySecretFile`"
           cd my_google_terraform
-          echo "$mySecretFile" > google.json
+          cat $mySecretFile > google.json
          '''
        }
      }
