@@ -12,6 +12,8 @@ pipeline {
   stage('TF Plan') {
       steps {
           sh 'cd my_google_terraform'
+          sh 'pwd'
+          sh 'ls'
           sh 'terraform init'
           sh 'terraform plan -out myplan'
       }
