@@ -6,11 +6,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        dir('my_google_terraform') {
-          withCredentials([file(credentialsId: 'google-terraform', variable: 'mygoogle')]) {
-            sh 'echo $FILE > ./google.json'
-          }
-        }
+      sh 'echo $SVC_ACCOUNT_KEY | base64 -b 64 > ./serviceaccount.json'
       }
     }
   }
