@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('credentials') {
       steps {
-        sh 'echo $SVC_ACCOUNT_KEY | base64 -d > ./my_google_terraform/google.json'
+        sh 'echo $SVC_ACCOUNT_KEY | base64 --decode > ./my_google_terraform/google.json'
       }
     }
   }
