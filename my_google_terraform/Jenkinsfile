@@ -9,5 +9,12 @@ pipeline {
       sh 'echo $SVC_ACCOUNT_KEY | base64 -b 64 > ./my_google_terraform/google.json'
       }
     }
+  stage('TF Plan') {
+      steps {
+          sh 'cd my_google_terraform'
+          sh 'terraform init'
+          sh 'terraform plan -out myplan'
+      }
+    }
   }
 }
