@@ -4,9 +4,10 @@ pipeline {
     SVC_ACCOUNT_KEY = credentials('google-terraform')
   }
   stages {
-    stage('credentials') {
+    stage('Checkout') {
       steps {
-        sh 'echo $SVC_ACCOUNT_KEY'
+        checkout scm
+        sh 'echo $SVC_ACCOUNT_KEY' > ./google.json
       }
     }
   }
