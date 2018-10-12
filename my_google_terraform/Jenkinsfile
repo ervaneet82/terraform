@@ -11,11 +11,11 @@ pipeline {
     }
   stage('TF Plan') {
       steps {
-          sh 'cd my_google_terraform'
-          sh 'pwd'
-          sh 'ls'
-          sh 'terraform init'
-          sh 'terraform plan -out myplan'
+          sh '''
+            cd my_google_terraform
+            terraform init'
+            terraform plan -out myplan
+          '''
       }
     }
   }
