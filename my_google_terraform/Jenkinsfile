@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-      sh 'echo $SVC_ACCOUNT_KEY | base64 -b 64 > ./serviceaccount.json'
+      sh 'echo $SVC_ACCOUNT_KEY | base64 -b 64 > ./my_google_terraform/google.json'
       }
     }
   }
