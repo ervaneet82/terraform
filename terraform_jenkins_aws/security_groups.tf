@@ -1,5 +1,5 @@
 resource "aws_security_group" "allow_all" {
-  vpc_id      = "${aws_vpc.main.id}"
+  vpc_id      = "${var.vpc_id}"
   name        = "Jenkins-Server"
   description = "Allow all inbound traffic"
 

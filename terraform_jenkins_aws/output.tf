@@ -3,7 +3,7 @@ output "ami id" {
 }
 
 output "public ip" {
-  value = "${aws_instance.public_instance.public_ip}"
+  value = "${aws_instance.terraform_test.public_ip}"
 }
 
 # output "bucket name" {

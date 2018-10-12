@@ -19,5 +19,9 @@ variable "instance_user" {
 }
 
 variable "subnet_id" {
-  default = ""
+  default = "subnet-022c91928b1fd3a31"
+}
+
+variable "vpc_id" {
+  default = "vpc-0e807e96aabc86790"
 }

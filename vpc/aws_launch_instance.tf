@@ -1,5 +1,6 @@
 provider "aws" {
   region = "${var.region}"
+  version = "1.16.0"
 }
 
 resource "aws_instance" "public_instance" {

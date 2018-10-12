@@ -9,12 +9,12 @@ provider "google" {
 resource "google_compute_instance" "default" {
   count        = "${var.num_nodes}"
   name         = "node${count.index + 1}"
-  machine_type = "n1-highmem-4"
+  machine_type = "n1-standard-1"
   zone         = "us-central1-a"
 
   scheduling {
-    automatic_restart = true
-#    preemptible       = true
+#    automatic_restart = true
+    preemptible       = true
   }
 
   boot_disk {
