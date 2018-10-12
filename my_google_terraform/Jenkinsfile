@@ -8,7 +8,7 @@ pipeline {
       steps {
         dir('my_google_terraform') {
           withCredentials([file(credentialsId: 'google-terraform', variable: 'mygoogle')]) {
-            sh 'use $FILE'
+            sh 'echo $FILE > ./google.json'
           }
         }
       }
