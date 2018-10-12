@@ -30,13 +30,11 @@ pipeline {
     }
     stage('TF Plan') {
       steps {
-        container('terraform') {
-          sh '''
-            cd my_google_terraform
-            terraform init
-            terraform plan -out myplan
-            '''
-        }
+        sh '''
+          cd my_google_terraform
+          terraform init
+          terraform plan -out myplan
+          '''
       }
     }
   }
