@@ -1,13 +1,13 @@
 pipeline {
-    agent any
-    environment {
-      SVC_ACCOUNT_KEY = credentials('google-terraform')
+  agent any
+  environment {
+    SVC_ACCOUNT_KEY = credentials('google-terraform')
+  }
+  stages {
+    stage('credentials') {
+      steps {
+        sh 'echo $SVC_ACCOUNT_KEY | base64 -d > ./my_google_terraform/google.json'
+      }
     }
-    stages {
-        stage('credentials') {
-            steps {
-                sh 'echo $SVC_ACCOUNT_KEY | base64 -d > ./my_google_terraform/google.json'
-            }
-        }
-    }
+  }
 }
