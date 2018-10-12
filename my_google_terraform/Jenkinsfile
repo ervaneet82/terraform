@@ -6,17 +6,13 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        ws {
         withCredentials([file(credentialsId: 'google-terraform', variable: 'mySecretFile')]) {
         // some block can be a groovy block as well and the variable will be available to the groovy script
-        dir('my_google_terraform') { sh '''
-          
-          use $mySecretFile > google.json
-
+        sh '''
+          cd my_google_terraform
+          echo "$mySecretFile" > google.json
          '''
        }
-       }
-     }
      }
     }
     stage('google-ssh-key') {
@@ -30,14 +26,6 @@ pipeline {
        }
      }
     }
-    stage('TF Plan') {
-      steps {
-          sh '''
-            cd my_google_terraform
-            terraform init
-            terraform plan -out myplan
-          '''
-      }
-    }
+    
   }
 }
