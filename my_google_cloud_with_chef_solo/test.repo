@@ -1,0 +1,5 @@
+[MyRepository]
+name=My Repository
+baseurl=http://<>
+enabled=1
+gpgcheck=0
