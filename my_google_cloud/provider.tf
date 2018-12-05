@@ -13,8 +13,9 @@ resource "google_compute_instance" "default" {
   zone         = "us-central1-a"
 
   scheduling {
-#    automatic_restart = true
-    preemptible       = true
+    automatic_restart = true
+
+    #  preemptible       = true
   }
 
   boot_disk {
@@ -43,7 +44,7 @@ resource "google_compute_instance" "default" {
     inline = [
       "sudo mv /tmp/ambari.repo /etc/yum.repos.d/",
       "sudo iptables -F",
-      "sudo systemctl stop firewalld"
+      "sudo systemctl stop firewalld",
     ]
   }
 

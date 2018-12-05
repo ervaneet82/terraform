@@ -1,6 +1,6 @@
 resource "aws_security_group" "allow_all" {
   vpc_id      = "vpc-0e807e96aabc86790"
-  name        = "allow_all"
+  name        = "vaneet"
   description = "Allow all inbound traffic"
 
   ingress {
@@ -11,6 +11,6 @@ resource "aws_security_group" "allow_all" {
   }
 
   tags {
-    Name = "allow_all"
+    Name = "vaneet"
   }
 }

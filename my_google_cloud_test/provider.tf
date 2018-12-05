@@ -13,8 +13,9 @@ resource "google_compute_instance" "default" {
   zone         = "us-east1-b"
 
   scheduling {
-    automatic_restart = false
-    preemptible       = true
+    automatic_restart = true
+
+    #  preemptible       = true
   }
 
   boot_disk {

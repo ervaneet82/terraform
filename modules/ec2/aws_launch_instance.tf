@@ -1,4 +1,5 @@
 resource "aws_instance" "terraform_test" {
+  count                       = "${var.num_nodes}"
   ami                         = "${data.aws_ami.amazon.id}"
   instance_type               = "t2.micro"
   vpc_security_group_ids      = ["${aws_security_group.allow_all.id}"]

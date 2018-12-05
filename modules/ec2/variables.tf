@@ -17,3 +17,7 @@ variable "PATH_TO_PRIVATE_KEY" {
 variable "instance_user" {
   default = "ubuntu"
 }
+
+variable "num_nodes" {
+  description = "Number of nodes to create"
+}

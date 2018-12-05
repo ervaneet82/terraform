@@ -1,3 +1,3 @@
 variable "bucket" {
-  default = "vaneet1"
+  default = "vaneet156"
 }
