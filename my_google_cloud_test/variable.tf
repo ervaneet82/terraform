@@ -8,7 +8,7 @@ variable "PATH_TO_PRIVATE_KEY" {
 
 variable "num_nodes" {
   description = "Number of nodes to create"
-  default     = 1
+  default     = 4
 }
 
 variable "disk_size_gb" {

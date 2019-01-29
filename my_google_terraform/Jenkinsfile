@@ -52,5 +52,13 @@ pipeline {
           '''
         }
     }
+    stage('TF Destroy') {
+      steps {
+          sh '''
+          cd my_google_terraform
+          terraform destroy -input=false
+          '''
+        }
+    }
   }
 }
