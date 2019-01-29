@@ -89,7 +89,7 @@ variable "master_username" {
 }
 
 variable "master_password" {
-  default = "test123#"
+  default = "<>"
 }
 
 variable "database_name" {
