@@ -42,26 +42,29 @@ module "s3" {
   bucket = "${var.bucket}"
 }
 
-module "ec2_s3_role" {
-  source = "modules/iam"
-  bucket = "${module.s3.bucket_arn}"
-}
-
+# module "ec2_s3_role" {
+#   source = "modules/iam"
+#   bucket = "${module.s3.bucket_arn}"
+# }
+#
 module "ec2_instances" {
   source                      = "modules/ec2"
-  vpc_id                      = "${module.my_vpc.vpc_id}"
+  public_subnet               = "${module.my_vpc.vpc_public_1_subnet_id}"
   ami                         = "${var.ami}"
   instance_count              = "${var.instance_count}"
   instance_type               = "${var.instance_type}"
   associate_public_ip_address = "true"
+  vpc_id                      = "${module.my_vpc.vpc_id}"
 }
 
-module "elb" {
-  source          = "modules/elb"
-  vpc_id          = "${module.my_vpc.vpc_id}"
-  instance_ids    = "${module.ec2_instances.instance_ids}"
-  security_groups = ["${module.my_sgs.sg_id}"]
-}
+#
+# module "elb" {
+#   source          = "modules/elb"
+#   vpc_id          = "${module.my_vpc.vpc_id}"
+#   instance_ids    = "${module.ec2_instances.instance_ids}"
+#   security_groups = ["${module.my_sgs.sg_id}"]
+# }
+
 
 # module "route53" {
 #   source  = "modules/route53"

@@ -15,7 +15,7 @@ variable "PATH_TO_PRIVATE_KEY" {
 }
 
 variable "instance_user" {
-  default = "ubuntu"
+  default = "ec2-user"
 }
 
 variable "instance_count" {
@@ -35,5 +35,9 @@ variable "vpc_id" {
 }
 
 variable ami {
+  default = ""
+}
+
+variable "public_subnet" {
   default = ""
 }

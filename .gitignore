@@ -10,3 +10,4 @@ terraform.*
 *.deb
 *.rpm
 google.json
+terraform.tfvars

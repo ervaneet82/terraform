@@ -1,14 +1,14 @@
 provider "google" {
   credentials = "${file("google.json")}"
   project     = "static-destiny-206401"
-  region      = "us-central1"
+  region      = "asia-south1"
 }
 
 resource "google_compute_instance" "default" {
   count        = "${var.num_nodes}"
   name         = "node${count.index + 1}"
-  machine_type = "n1-standard-1"
-  zone         = "us-central1-a"
+  machine_type = "n1-highmem-8"
+  zone         = "asia-south1-b"
 
   scheduling {
     automatic_restart = true

@@ -15,7 +15,7 @@ variable "PATH_TO_PRIVATE_KEY" {
 }
 
 variable "instance_user" {
-  default = "ubuntu"
+  default = "ec2-user"
 }
 
 variable "instance_count" {
@@ -37,7 +37,7 @@ variable "instance_ids" {
 }
 
 variable "ami" {
-  default = "ami-e267d59a"
+  default = "ami-035be7bafff33b6b6"
 }
 
 variable "public_subnet1_cidr" {
@@ -50,6 +50,10 @@ variable "public_subnet1_availability_zone" {
 
 variable "vpc_cidr_block" {
   default = "192.0.0.0/16"
+}
+
+variable "public_subnet" {
+  default = ""
 }
 
 ### Private subnets
@@ -89,7 +93,7 @@ variable "master_username" {
 }
 
 variable "master_password" {
-  default = "<>"
+  default = "test123#"
 }
 
 variable "database_name" {
@@ -97,7 +101,7 @@ variable "database_name" {
 }
 
 variable "instance_count_in_cluster" {
-  default = "2"
+  default = "0"
 }
 
 variable "environment_name" {

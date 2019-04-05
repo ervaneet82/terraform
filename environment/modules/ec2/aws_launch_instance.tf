@@ -1,6 +1,6 @@
-data "aws_subnet_ids" "selected" {
-  vpc_id = "${var.vpc_id}"
-}
+# data "aws_subnet_ids" "selected" {
+#   vpc_id = "${var.vpc_id}"
+# }
 
 resource "aws_instance" "terraform_test" {
   count                       = "${var.instance_count}"
@@ -9,7 +9,7 @@ resource "aws_instance" "terraform_test" {
   vpc_security_group_ids      = ["${aws_security_group.allow_all.id}"]
   associate_public_ip_address = "${var.associate_public_ip_address}"
   key_name                    = "${aws_key_pair.mykey.key_name}"
-  subnet_id                   = "${data.aws_subnet_ids.selected.ids[count.index]}"
+  subnet_id                   = "${var.public_subnet}"
 
   # provisioner "file" {
   #   source      = "script.sh"
@@ -30,5 +30,20 @@ resource "aws_instance" "terraform_test" {
   }
   tags {
     Name = "Test-${count.index}"
+  }
+}
+
+resource "null_resource" "execute_command" {
+  connection {
+    user        = "${var.instance_user}"
+    private_key = "${file("${var.PATH_TO_PRIVATE_KEY}")}"
+    timeout     = "10m"
+  }
+
+  provisioner "remote-exec" {
+    # Bootstrap script called with private_ip of each node in the clutser
+    inline = [
+      "ls",
+    ]
   }
 }
