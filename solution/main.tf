@@ -27,29 +27,30 @@ output "ami_ids" {
 
 data "aws_availability_zones" "available" {}
 
-resource "aws_vpc" "main" {
-  cidr_block           = "${var.cidr_block}"
-  instance_tenancy     = "default"
-  enable_dns_support   = "true"
-  enable_dns_hostnames = "true"
-  enable_classiclink   = "false"
+# resource "aws_vpc" "main" {
+#   cidr_block           = "${var.cidr_block}"
+#   instance_tenancy     = "default"
+#   enable_dns_support   = "true"
+#   enable_dns_hostnames = "true"
+#   enable_classiclink   = "false"
+#
+#   tags {
+#     name = "main"
+#   }
+# }
 
-  tags {
-    name = "main"
-  }
-}
 
-resource "aws_subnet" "main-public" {
-  count             = "${var.count}"
-  vpc_id            = "${aws_vpc.main.id}"
-  cidr_block        = "${cidrsubnet(var.cidr_block,8,count.index + 1)}"
-  availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
-
-  tags {
-    name = "main-public-${count.index + 1}"
-  }
-}
-
+# resource "aws_subnet" "main-public" {
+#   count             = "${var.count}"
+#   vpc_id            = "${aws_vpc.main.id}"
+#   cidr_block        = "${cidrsubnet(var.cidr_block,8,count.index + 1)}"
+#   availability_zone = "${data.aws_availability_zones.available.names[count.index]}"
+#
+#   tags {
+#     name = "main-public-${count.index + 1}"
+#   }
+# }
+#
 # data "aws_subnet" "public_subnet" {
 #   count = "${length(data.aws_subnet_ids.vpc.ids)}"
 #   id    = "${data.aws_subnet_ids.vpc.ids[count.index]}"

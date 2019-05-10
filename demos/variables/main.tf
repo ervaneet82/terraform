@@ -7,4 +7,8 @@ resource "aws_instance" "terraform_demo" {
   associate_public_ip_address = "true"
   vpc_security_group_ids      = ["${var.security_group}"]
   key_name                    = "${var.key_pair}"
+
+  tags {
+    Name = "hello"
+  }
 }
