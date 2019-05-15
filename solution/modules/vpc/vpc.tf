@@ -19,7 +19,7 @@ data "aws_availability_zones" "available" {}
 # Creating subnet and assign cidr block by cidrsubnet ----
 
 resource "aws_subnet" "public" {
-  count      = "${var.subnet_count}"
+  count      = "${var.public_subnet_count}"
   vpc_id     = "${aws_vpc.custom.id}"
   cidr_block = "${cidrsubnet(var.cidr_block,8,count.index + 1)}"
 
@@ -44,7 +44,7 @@ resource "aws_internet_gateway" "main-gw" {
 
 # route tables
 
-resource "aws_route_table" "main-public" {
+resource "aws_route_table" "public_subnet" {
   vpc_id = "${aws_vpc.custom.id}"
 
   route {
@@ -53,14 +53,49 @@ resource "aws_route_table" "main-public" {
   }
 
   tags {
-    Name = "${aws_vpc.custom.id}-${var.route_tag}"
+    Name = "${aws_vpc.custom.id}-${var.public_route_table_tag}"
   }
 }
 
 # route association public
 
-resource "aws_route_table_association" "main-public-1-a" {
+resource "aws_route_table_association" "main-public" {
   count          = "${var.subnet_count}"
   subnet_id      = "${element(aws_subnet.public.*.id, count.index)}"
-  route_table_id = "${aws_route_table.main-public.id}"
+  route_table_id = "${aws_route_table.public_subnet.id}"
+}
+
+# Private subnets
+
+resource "aws_subnet" "private_subnet" {
+  count      = "${var.private_subnet_count}"
+  vpc_id     = "${aws_vpc.custom.id}"
+  cidr_block = "${cidrsubnet(var.cidr_block,8,count.index + 1)}"
+
+  #availability_zone       = "${data.aws_availability_zones.available.names[count.index]}"
+  availability_zone       = "${element(sort(data.aws_availability_zones.available.names), count.index)}"
+  map_public_ip_on_launch = "${var.enable_ip_address_on_launch}"
+
+  tags {
+    #  Name = "private-${count.index + 1}"
+    Name = "${format("private-%03d",count.index + 1)}"
+  }
+}
+
+# route tables for private subnets
+
+resource "aws_route_table" "private_subnet" {
+  vpc_id = "${aws_vpc.custom.id}"
+
+  tags {
+    Name = "${aws_vpc.custom.id}-${var.private_route_table_tag}"
+  }
+}
+
+# route association public
+
+resource "aws_route_table_association" "main-private" {
+  count          = "${var.subnet_count}"
+  subnet_id      = "${element(aws_subnet.private_subnet.*.id, count.index)}"
+  route_table_id = "${aws_route_table.private_subnet.id}"
 }

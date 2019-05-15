@@ -2,8 +2,12 @@ variable "vpc_tag" {
   default = "custom"
 }
 
-variable "subnet_count" {
-  default = "50"
+variable "public_subnet_count" {
+  default = "2"
+}
+
+variable "private_subnet_count" {
+  default = "2"
 }
 
 variable "cidr_block" {
@@ -26,8 +30,12 @@ variable "igw_tag" {
   default = "igw"
 }
 
-variable "route_tag" {
-  default = "route-table"
+variable "public_route_table_tag" {
+  default = "public_route_table"
+}
+
+variable "private" {
+  default = "private_route_table"
 }
 
 variable "name" {
