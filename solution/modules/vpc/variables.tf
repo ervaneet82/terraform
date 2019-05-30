@@ -1,44 +1,43 @@
 variable "vpc_tag" {
-  default = "custom"
+  default = ""
 }
 
 variable "public_subnet_count" {
-  default = "2"
+  default = ""
 }
 
 variable "private_subnet_count" {
-  default = "2"
+  default = ""
 }
 
 variable "cidr_block" {
-  default = "10.0.0.0/16"
+  default = ""
 }
 
 variable "tenancy" {
-  default = "default"
+  default = ""
 }
 
 variable "enable_dns_support" {
-  default = "true"
+  default = ""
 }
 
 variable "enable_ip_address_on_launch" {
-  default = "true"
+  default = ""
 }
 
 variable "igw_tag" {
-  default = "igw"
+  default = ""
 }
 
 variable "public_route_table_tag" {
-  default = "public_route_table"
+  default = ""
+}
+
+variable "private_route_table_tag" {
+  default = ""
 }
 
 variable "private" {
-  default = "private_route_table"
-}
-
-variable "name" {
-  type    = "list"
-  default = ["value1", "value1"]
+  default = ""
 }
