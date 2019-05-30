@@ -12,7 +12,7 @@ variable "security_group_tag" {
 }
 
 variable "sg_tcp_ports" {
-  default = ""
+  default = "22,80,443"
 }
 
 variable "sg_udp_ports" {

@@ -64,7 +64,7 @@ variable "sg_tcp_ports" {
 }
 
 variable "sg_udp_ports" {
-  default = ""
+  default = "default_null"
 }
 
 variable "sg_tcp_cidrs" {

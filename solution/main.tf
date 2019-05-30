@@ -25,4 +25,6 @@ module "sg1" {
   sg_tcp_ports            = "${var.sg_tcp_ports}"
   sg_tcp_cidrs            = "${var.sg_tcp_cidrs}"
   vpc_id                  = "${module.my_vpc.vpc_id}"
+  sg_udp_ports            = "${var.sg_udp_ports}"
+  sg_udp_cidrs            = "${var.sg_udp_cidrs}"
 }
