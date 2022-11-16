@@ -1,7 +1,5 @@
 version: 0.2
-env:
-  variables:
-    TOKEN: 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
+
 phases:
   build:
     commands:
