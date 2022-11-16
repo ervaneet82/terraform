@@ -5,4 +5,4 @@ env:
 phases:
   build:
     commands:
-      - bash git_changes.sh
+      - which curl
