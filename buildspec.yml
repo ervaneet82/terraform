@@ -5,4 +5,4 @@ env:
 phases:
   build:
     commands:
-      - ./git_changes.sh
+      - bash git_changes.sh
