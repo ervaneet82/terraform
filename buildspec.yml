@@ -1,5 +1,7 @@
 version: 0.2
-
+env:
+  variables:
+    TOKEN: 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
 phases:
   build:
     commands:
