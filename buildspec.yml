@@ -1,8 +1,7 @@
 version: 0.2
 env:
-  env:
-    parameter-store:
-      TOKEN: /github/token
+  parameter-store:
+    TOKEN: /github/token
 phases:
   build:
     commands:
@@ -13,4 +12,4 @@ phases:
       - chmod 777 git_changes.sh
       - ls -ltr git_changes.sh
       #- bash git_changes.sh
-      - git log --pretty=oneline --abbrev-commit
+      - git diff --name-only HEAD HEAD~1
