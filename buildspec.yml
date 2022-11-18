@@ -5,11 +5,8 @@ env:
 phases:
   build:
     commands:
-      - echo $TOKEN
-      - ls
-      - pwd
-      - which bash
       - chmod 777 git_changes.sh
-      - ls -ltr git_changes.sh
       - bash git_changes.sh
+      - ls
+      - cat test.txt
       #- git diff --name-only HEAD HEAD\~1
