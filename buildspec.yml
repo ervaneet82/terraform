@@ -12,4 +12,4 @@ phases:
       - chmod 777 git_changes.sh
       - ls -ltr git_changes.sh
       #- bash git_changes.sh
-      - git diff --name-only HEAD HEAD~1
+      - git diff --name-only HEAD HEAD\~1
