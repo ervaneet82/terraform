@@ -5,4 +5,6 @@
 SHA1=`git log --pretty=oneline --abbrev-commit | head -1 | awk -F' ' '{ print $1 }'`
 SHA2=`git log --pretty=oneline --abbrev-commit | head -2 | tail -1  | awk -F' ' '{ print $1 }'`
 
+echo "SHA1: $SHA1"
+echo "SHA2: $SHA2"
 git diff --name-only $SHA2..$SHA1 > test.txt

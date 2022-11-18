@@ -6,6 +6,7 @@ phases:
   build:
     commands:
       - chmod 777 git_changes.sh
+      - which bash
       - bash git_changes.sh
       - ls
       - cat test.txt
