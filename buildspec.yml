@@ -8,6 +8,7 @@ phases:
       - chmod 777 git_changes.sh
       - which bash
       - which cat
+      - /usr/bin/cat git_changes.sh
       - /usr/bin/bash -x git_changes.sh
-      - /usr/bin/cat test.txt
+     # - /usr/bin/cat test.txt
       #- git diff --name-only HEAD HEAD\~1
