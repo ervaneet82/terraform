@@ -6,6 +6,8 @@ phases:
   build:
     commands:
       - chmod 777 git_changes.sh
+      - git@github.com:ervaneet82/terraform.git
+      - cd terraform
       - git fetch --all
       - git pull --all
       - git log
