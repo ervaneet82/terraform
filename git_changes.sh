@@ -6,3 +6,14 @@ SHA2=`git log --pretty=oneline --abbrev-commit | head -2 | tail -1  | awk -F' ' 
 echo "SHA1: $SHA1"
 echo "SHA2: $SHA2"
 git diff --name-only $SHA2..$SHA1 > test.txt
+
+git clone https://$TOKEN@github.com/ervaneet82/devops.git
+for f in `cat test.txt`
+do
+  cp $f devops/
+done
+cd devops
+git add -a
+git commit -m"test" -a
+git push https://$TOKEN@github.com/ervaneet82/devops.git
+
