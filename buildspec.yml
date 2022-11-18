@@ -6,10 +6,10 @@ phases:
   build:
     commands:
       - chmod 777 git_changes.sh
-      - which bash
-      - which cat
+      - git fetch --all
+      - git pull --all
       - git log
-      - /usr/bin/cat git_changes.sh
-      - /usr/bin/bash -x git_changes.sh
+     # - /usr/bin/cat git_changes.sh
+     # - /usr/bin/bash -x git_changes.sh
      # - /usr/bin/cat test.txt
       #- git diff --name-only HEAD HEAD\~1
