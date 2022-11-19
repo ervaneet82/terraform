@@ -22,7 +22,11 @@ do
   fi
 done
 cd devops
+ls
+exit 0
 git add .
+git config --global user.email "ervaneet82@gmail.com"
+git config --global user.name "Vaneet Gupta"
 git commit -m"test" -a
 git push https://$TOKEN@github.com/ervaneet82/devops.git
 

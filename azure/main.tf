@@ -7,7 +7,6 @@ resource "azurerm_virtual_machine" "test" {
 
 
 
-  # Uncomment this line to delete the data disks automatically when deleting the VM
   # delete_data_disks_on_termination = true
 
   storage_image_reference {
