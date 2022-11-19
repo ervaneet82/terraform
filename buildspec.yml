@@ -9,4 +9,3 @@ phases:
       - cd terraform
       - chmod 777 git_changes.sh
       - /usr/bin/bash git_changes.sh
-      - /usr/bin/cat test.txt

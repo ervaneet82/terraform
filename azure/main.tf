@@ -7,7 +7,6 @@ resource "azurerm_virtual_machine" "test" {
 
 
 
-  # delete_data_disks_on_termination = true
 
   storage_image_reference {
     publisher = "Canonical"
