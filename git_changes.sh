@@ -6,7 +6,7 @@ SHA2=`git log --pretty=oneline --abbrev-commit | head -2 | tail -1  | awk -F' ' 
 git diff --name-only $SHA2..$SHA1 > test.txt
 
 git clone https://$TOKEN@github.com/ervaneet82/devops.git
-or f in `cat test.txt`
+for f in `cat test.txt`
 do
   directory=`echo $f | awk -F'/' '{$NF=""; print $0}' | sed 's/ /\//g'`
   file=`echo $f | awk -F'/' '{print $NF}'`
