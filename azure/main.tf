@@ -5,7 +5,6 @@ resource "azurerm_virtual_machine" "test" {
   network_interface_ids = ["${azurerm_network_interface.myterraformnic.id}"]
   vm_size               = "Standard_DS1_v2"
 
-  # delete_os_disk_on_termination = true
 
 
   # Uncomment this line to delete the data disks automatically when deleting the VM
